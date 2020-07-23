@@ -1,0 +1,27 @@
+{
+    "name": "vortex_crud",
+    "version": "1.0.0",
+    "description": "Prueba vacante Backend",
+    "main": "index.js",
+    "scripts": {
+        "clean": "del build",
+        "build": "tsc",
+        "full": "tsc && node ./build/src",
+        "start": "node build/src",
+        "dev": "nodemon"
+    },
+    "keywords": [],
+    "author": "Cristhian Camilo Reyes",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mysql": "^2.18.1"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.7",
+        "@types/mysql": "^2.15.15",
+        "nodemon": "^2.0.4",
+        "ts-node": "^8.10.2",
+        "typescript": "^3.9.7"
+    }
+}

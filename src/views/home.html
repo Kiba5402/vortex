@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid cont">
+        <div class="row align-items-center main">
+            <div class="col-md-7 col-sm-12 lista">
+                <div>
+                    <h3>Lista Empleados</h3>
+                </div>
+                <hr>
+                <div class="contentTabla">
+                    <table class="table table-striped table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nombres</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Fecha ing.</th>
+                                <th scope="col">Salario</th>
+                                <th scope="col">Tels</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla">
+                            <tr>
+                                <th colspan="10" style="text-align: center;">Cargando Datos...</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <span class="empEl" id="empEl">Empleado Eliminado</span>
+                <span class="empAdd" id="empAdd">Empleado Agregado</span>
+                <span class="empUpd" id="empUpd">Empleado Actualizado</span>
+            </div>
+            <div class="col-md-5 col-sm-12  form">
+                <div>
+                    <h3>Formulario Empleado</h3>
+                </div>
+                <hr>
+                <div>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="nombre" class="col-form-label col-form-label-sm">Nombres</label>
+                                <span class="obligatorio">*</span>
+                                <input type="text" class="form-control form-control-sm" id="nombres" placeholder="Nombre">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="nombre" class="col-form-label col-form-label-sm">Apellidos</label>
+                                <span class="obligatorio">*</span>
+                                <input type="text" class="form-control form-control-sm" id="apellidos" placeholder="Apellidos">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label class="col-form-label col-form-label-sm" for="exampleFormControlSelect1">Tipo Identificación</label>
+                                <span class="obligatorio">*</span>
+                                <select class="form-control form-control-sm" id="tipoId">
+                            <option value="-1">Seleccionar Tipo</option>
+                            <option value="2">CC</option>
+                            <option value="1">NIT</option>
+                          </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="nombre" class="col-form-label col-form-label-sm">Numero Identificación</label>
+                                <span class="obligatorio">*</span>
+                                <input type="text" class="form-control form-control-sm" id="numId" placeholder="Identificación">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Email</label>
+                                <input type="email" class="form-control form-control-sm" id="email" placeholder="example@email.com">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Fecha ingreso</label>
+                                <input type="date" class="form-control form-control-sm" id="fecha">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Salario</label>
+                            <span class="obligatorio">*</span>
+                            <input onkeyup="formatSueldoForm(this)" limpio="0" onkeydown="return onlyNumber(event)" type="text" class="form-control form-control-sm" id="salario" placeholder="$0">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-10">
+                                <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Telefonos</label>
+                                <input onkeydown="return onlyNumber(event)" type="text" class="form-control form-control-sm" onkeyup="listenTels(this)" id="telefonoInput">
+                            </div>
+                            <div class="form-group col-2">
+                                <label for="colFormLabelSm" class="col-form-label col-form-label-sm" style="color: white;">.</label>
+                                <button type="button" onclick="addTelFn()" disabled id="addTel" class="form-control form-control-sm btn btn-sm btn-sm btn-primary">Agregar</button>
+                            </div>
+                        </div>
+                        <div class="nums container-fuid" id="divNums"></div>
+                        <span class="obligatorio">Campos obligatrios *</span><br>
+                        <span class="msgC" id="correoMsg">Correo no valido</span>
+                        <div class="form-row justify-content-end">
+                            <div class="form-group col-2">
+                                <button disabled id="btnEdita" type="button" onclick="editaFn()" class="btn btn-sm btn-block btn-primary float-right">Editar</button>
+                            </div>
+                            <div class="form-group col-2">
+                                <button type="button" id="btnGuarda" onclick="guardaFn()" class="btn btn-sm btn-block btn-primary float-right">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="js/home.js"></script>
+<script src="js/formulario.js"></script>
+
+</html>
