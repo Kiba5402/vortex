@@ -6,7 +6,7 @@ import router from './router/router'
 const app = express();
 
 //configuraciones 
-app.set('port', 4000);
+app.set('port', process.env.PORT || 3000);
 
 //CORS
 app.use((req, res, next) => {
