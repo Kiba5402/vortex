@@ -23,6 +23,9 @@ router.get('/prueba', ctrLog.verifySign, (req: any, res: any) => {
 //ruta de login
 router.get('/login', ctrLog.signUp);
 
+//ruta de logout
+router.get('/logout', ctrLog.signOut);
+
 //ruta inicial que pinta el home
 router.get('/getEmp', ctrLog.verifySign, control.getEmpleados);
 
