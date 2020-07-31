@@ -20,7 +20,6 @@ function guardaFn() {
             guardar();
         }
     } else {
-        console.log("faltan datos");
         validaEmail();
         viewObli(false);
     }
@@ -56,7 +55,6 @@ function viewObli(flag) {
 
 //funcion escucha del input de cantidad
 function onlyNumber(event) {
-    console.log(event);
     let regex = /[^0-9]/g;
     let match = event.key.match(regex);
     console.log(match);
@@ -117,7 +115,7 @@ function renderNewTel(flag) {
     let divEditar = document.createElement('div');
     divNum.innerHTML = input.value;
     divBorrar.innerHTML = `<a class="badge badge-danger" onclick="borrarTelProv(${input.value})">Borrar</a>`;
-    divEditar.innerHTML = flag ? '<span class="badge badge-secondary">Editar</span>' : `<a class="badge badge-primary">Editar</a>`;
+    /* divEditar.innerHTML = flag ? '<span class="badge badge-secondary">Editar</span>' : `<a class="badge badge-primary">Editar</a>`; */
     div.appendChild(divNum);
     div.appendChild(divEditar);
     div.appendChild(divBorrar);
@@ -159,6 +157,9 @@ function guardar() {
             } catch (e) {
                 console.log(e);
             }
+        } else if (this.readyState == 4 && this.status == 201) {
+            let msgno = document.getElementById('noAuth');
+            msgno.style.display = 'block';
         }
     }
 }

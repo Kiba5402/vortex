@@ -21,6 +21,11 @@ function getEmpleados() {
             } catch (e) {
                 console.log(e);
             }
+        } else if (this.readyState == 4 && this.status == 201) {
+            let cargaD = document.getElementById('cargaData');
+            cargaD.style.display = 'none';
+            let fordi = document.getElementById('fordiben');
+            fordi.style.display = 'table-row';
         }
     }
 
@@ -29,7 +34,6 @@ function getEmpleados() {
 
 //funcion que pinta los empleados en la tabla
 function renderEmpl(info) {
-    console.log(info);
     let tabla = document.getElementById('tabla');
     tabla.innerHTML = '';
     info.forEach(element => {

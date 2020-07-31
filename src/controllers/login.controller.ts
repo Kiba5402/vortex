@@ -43,7 +43,7 @@ class loginController {
                 });
             }
         } else {
-            res.status(200).json({
+            res.status(201).json({
                 auth: false,
                 message: 'Sin Token'
             });
