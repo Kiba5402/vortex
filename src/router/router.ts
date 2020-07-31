@@ -2,27 +2,41 @@
 import path from 'path';
 import express, { Router } from 'express';
 import { EmpleadoController } from '../controllers/empleado.controller';
+import { loginController } from '../controllers/login.controller';
 
 //constante
 const router: Router = express.Router();
 const mainPath = path.resolve(process.cwd());
 const control = new EmpleadoController();
+const ctrLog = new loginController();
 
 //ruta inicial que pinta el home
 router.get('/', (req, res) => {
     res.sendFile(mainPath + '/src/views/home.html');
 });
 
+//ruta de prueba
+router.get('/prueba', ctrLog.verifySign, (req: any, res: any) => {
+    res.json(req.infoUsr);
+});
+
+//ruta de login
+router.get('/login', ctrLog.signUp);
+
 //ruta inicial que pinta el home
-router.get('/getEmp', control.getEmpleados);
+router.get('/getEmp', ctrLog.verifySign, control.getEmpleados);
 
-router.get('/getEmp/:id', control.getEmpleado);
+//ruta que trae un empleadosegun su id
+router.get('/getEmp/:id', ctrLog.verifySign, control.getEmpleado);
 
-router.post('/insert', control.insertEmpleado);
+//ruta que guarda un nuevo empleado
+router.post('/insert', ctrLog.verifySign, control.insertEmpleado);
 
-router.delete('/deleteEmp/:idEmp', control.deleteEmpleado);
+//ruta que borra un empleado
+router.delete('/deleteEmp/:idEmp', ctrLog.verifySign, control.deleteEmpleado);
 
-router.put('/updateEmp/', control.updateEmpleado);
+//ruta que actualiza un empleado
+router.put('/updateEmp/', ctrLog.verifySign, control.updateEmpleado);
 
 //exportamos
 export = router;

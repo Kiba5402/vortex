@@ -23,7 +23,8 @@ const keys  = {
         user: 'kiba5402',
         password: 'skullskate',
         database: 'empleados_vortex',
-        port: 3306
+        port: 3306,
+        acquireTimeout: 1000000
     }
 };
 
