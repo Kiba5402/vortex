@@ -18,13 +18,13 @@ class loginController {
         //retornamos el token
         /*res.setHeader('Set-Cookie', `tokenHO=; expires=Thu, 01 Jan 1970 00:00:01 HttpOnly`);*/
         res.setHeader('Set-Cookie', `tokenHO=${token}; HttpOnly`);
-        res.sendStatus(200);
+        res.status(200).send('Logueado correctamente, ir a la pagina principal');
         /* res.json({ 'auth': true, token }); */
     }
 
     signOut(req: Request, res: Response): void {
         res.setHeader('Set-Cookie', `tokenHO=; expires=Thu, 01 Jan 1970 00:00:01 HttpOnly`);
-        res.sendStatus(200);
+        res.status(200).send('Deslogueado correctamente, ir a la pagina principal');
     }
 
     verifySign(req: any, res: Response, next: NextFunction): void {
