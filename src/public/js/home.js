@@ -123,7 +123,7 @@ function addTels(tels) {
         if (tels.length > 1) {
             let title = '';
             for (let i = 1; i < tels.length; i++) {
-                title += tels[i].numero_tel;
+                title += ' * ' + tels[i].numero_tel + ' * ';
             }
             telefonos.setAttribute('title', 'Otros numeros: ' + title);
             telefonos.setAttribute('href', '#ancla');
