@@ -27,19 +27,19 @@ router.get('/login', ctrLog.signUp);
 router.get('/logout', ctrLog.signOut); */
 
 //ruta inicial que pinta el home
-router.get('/getEmp', ctrLog.verifySign, control.getEmpleados);
+router.get('/getEmp', control.getEmpleados);
 
 //ruta que trae un empleadosegun su id
-router.get('/getEmp/:id', ctrLog.verifySign, control.getEmpleado);
+router.get('/getEmp/:id', control.getEmpleado);
 
 //ruta que guarda un nuevo empleado
-router.post('/insert', ctrLog.verifySign, control.insertEmpleado);
+router.post('/insert', control.insertEmpleado);
 
 //ruta que borra un empleado
-router.delete('/deleteEmp/:idEmp', ctrLog.verifySign, control.deleteEmpleado);
+router.delete('/deleteEmp/:idEmp', control.deleteEmpleado);
 
 //ruta que actualiza un empleado
-router.put('/updateEmp/', ctrLog.verifySign, control.updateEmpleado);
+router.put('/updateEmp/', control.updateEmpleado);
 
 //exportamos
 export = router;
