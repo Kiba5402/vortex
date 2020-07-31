@@ -10,14 +10,15 @@ let tels = document.getElementById('divNums');
 let arrayTel = [];
 
 function guardaFn() {
-    console.log(tipoId.value);
     if (nombres.value.trim() != "" && apellidos.value.trim() != "" &&
         salario.value.trim() != "" && numId.value.trim() != "" &&
         tipoId.value != -1) {
         viewObli(true);
         if (validaEmail()) {
-            //enviamos los datospara guardar
+            //enviamos los datos para guardar
             guardar();
+            //mostramos el mensaje de procesamiento
+            showProc(true);
         }
     } else {
         validaEmail();
@@ -134,7 +135,6 @@ function guardar() {
     let url = `${protocol}//${urlG}/insert`;
 
     let datos = recopDatosEnv();
-    console.log(datos);
 
     ajaxP.open('POST', url, true);
 
@@ -148,6 +148,8 @@ function guardar() {
             try {
                 let resp = JSON.parse(this.responseText);
                 if (resp.InsertEmp && resp.InsertTels) {
+                    //ocultamos el mensaje de procesamiento
+                    showProc(false);
                     let msg = document.getElementById('empAdd');
                     msg.style.display = 'block';
                     setTimeout(() => {
@@ -197,7 +199,6 @@ function creaTelList(idEmp) {
 
 //funcion principal para la edicion de empleados
 function editaEmp(idEmp) {
-    console.log('se editara', idEmp);
     //datos de tabla
     let tipoDoc = document.getElementById('tipoDoc' + idEmp);
     let numDoc = document.getElementById('numDoc' + idEmp);
@@ -252,11 +253,13 @@ function editaEmp(idEmp) {
 //funcion que recopila los datos a actualizar
 function editaFn() {
 
+    //mostramos mensaje de procesamiento
+    showProc(true);
+
     var ajaxP = new XMLHttpRequest();
     let url = `${protocol}//${urlG}/updateEmp`;
 
     let datos = creaDataEditaFn();
-    console.log(datos);
 
     ajaxP.open('PUT', url, true);
 
@@ -270,6 +273,8 @@ function editaFn() {
             try {
                 let resp = JSON.parse(this.responseText);
                 if (resp.InsertEmp) {
+                    //ocultamos mensaje de procesamiento
+                    showProc(false);
                     let btnA = document.getElementById('btnEdita');
                     btnA.setAttribute('disabled', true);
                     let msg = document.getElementById('empUpd');
@@ -322,4 +327,15 @@ function creaDataEditaFn() {
     }
 
     return datos;
+}
+
+//funcion que muestra u oculta el mensaje de
+//procesamiento
+function showProc(flag) {
+    let div = document.getElementById('process');
+    if (flag) {
+        div.style.display = 'block';
+    } else {
+        div.style.display = 'none';
+    }
 }

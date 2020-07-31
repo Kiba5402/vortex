@@ -135,6 +135,8 @@ function addTels(tels) {
 //funcion que invoca al api para borrar un 
 //empleado
 function borrarEmp(idEmp) {
+    //mostramos emnsaje de procesamiento
+    showProc(true);
 
     var ajaxP = new XMLHttpRequest();
     let url = `${protocol}//${urlG}/deleteEmp/${idEmp}`;
@@ -146,6 +148,8 @@ function borrarEmp(idEmp) {
             try {
                 let resp = JSON.parse(this.responseText);
                 if (resp.DeleteEmp) {
+                    //ocultamos mensaje de procesamiento
+                    showProc(false);
                     let msg = document.getElementById('empEl');
                     let row = document.getElementById('empId' + idEmp);
                     msg.style.display = 'block';
